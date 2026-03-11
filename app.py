@@ -20,3 +20,9 @@ build_histogram = st.checkbox('Criar um histograma')
 
 if build_histogram: # se a caixa de seleção for selecionada
   st.write('Criando um histograma para a coluna odometer')
+import pandas as pd
+import plotly.express as px
+
+car_data = pd.read_csv('vehicles_us.csv') # lendo os dados
+fig = px.scatter(car_data, x="odometer", y="price") # criar um gráfico de dispersão
+st.plotly_chart(fig, use_container_width=True)
